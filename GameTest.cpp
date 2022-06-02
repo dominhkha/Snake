@@ -143,10 +143,10 @@ bool verifyAddCherry(){
   if(actualCherryPos == nullptr){
     return false;
   }
-  std:cout<<updatedCherryPos.x<<std::endl;
-  std:cout<<actualCherryPos->x<<std::endl;
-  std:cout<<updatedCherryPos.y<<std::endl;
-  std:cout<<actualCherryPos->y<<std::endl;
+  std::cout<<updatedCherryPos.x<<std::endl;
+  std::cout<<actualCherryPos->x<<std::endl;
+  std::cout<<updatedCherryPos.y<<std::endl;
+  std::cout<<actualCherryPos->y<<std::endl;
   return updatedCherryPos.x == actualCherryPos->x && updatedCherryPos.y == actualCherryPos->y;
 }
 
