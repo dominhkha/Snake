@@ -154,17 +154,14 @@ CPPUNIT_TEST_SUITE_REGISTRATION(Test);
 
 int main()
 {
-  Game game(BOARD_WIDTH, BOARD_HEIGHT);
-  // SDL_Event e;
-  Position p(1, 2);
-  game.setCellType(p, CELL_EMPTY);
+
   CPPUNIT_NS::TestResult controller;
 
-  CPPUNIT_NS::TestResultCollector result;
-  controller.addListener(&result);
+  // CPPUNIT_NS::TestResultCollector result;
+  // controller.addListener(&result);
 
-  CPPUNIT_NS::BriefTestProgressListener progress;
-  controller.addListener(&progress);
+  // CPPUNIT_NS::BriefTestProgressListener progress;
+  // controller.addListener(&progress);
 
   CPPUNIT_NS::TestRunner runner;
 
