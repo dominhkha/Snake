@@ -136,8 +136,11 @@ bool verifyAddCherry(){
 
   // if no cherry is added, return false
   if(actualCherryPos == nullptr){
+    std::cout<<"none";
     return false;
   }
+  std::cout<<updatedCherryPos.x;
+  std::cout<<updatedCherryPos.x;
 
   return updatedCherryPos.x == actualCherryPos->x && updatedCherryPos.y == actualCherryPos->y;
 }
@@ -284,7 +287,7 @@ protected:
         sharedName,
         verifyAddCherry(),
         true,
-        "Cherry should be randomly added if snake have already ate"
+        "Cherry should be randomly added if snake have already eaten"
       },
     };
 
