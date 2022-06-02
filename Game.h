@@ -40,7 +40,7 @@ public:
     void setGameStatus(GameStatus status);
 
     std::vector<Position> getSnakePositions() const;
-    Position getCherryPosition() { return cherryPosition; }
+    Position getCherryPosition() const { return cherryPosition; }
     int getScore() const { return score; }
     bool canChange(Direction current, Direction next) const;    
     
