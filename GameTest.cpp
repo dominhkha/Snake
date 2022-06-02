@@ -136,10 +136,10 @@ bool verifyAddCherry(){
 
   // if no cherry is added, return false
   if(actualCherryPos == nullptr){
-    return false
+    return false;
   }
 
-  return *setCherryPos.x == actualCherryPos.x && *setCherryPos.y == actualCherryPos.y;
+  return setCherryPos->x == actualCherryPos.x && &setCherryPos->y == actualCherryPos.y;
 }
 
 class Test: public CPPUNIT_NS::TestCase {
