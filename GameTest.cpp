@@ -131,7 +131,7 @@ bool verifyAddCherry(){
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
   gameTest.addCherry();
 
-  Position setCherryPos = gameTest.getCherryPosition();
+  Position updatedCherryPos = gameTest.getCherryPosition();
   Position *actualCherryPos =  getPositionByCellTypeInBoard(CELL_CHERRY, gameTest);
 
   // if no cherry is added, return false
@@ -139,7 +139,7 @@ bool verifyAddCherry(){
     return false;
   }
 
-  return setCherryPos.x == actualCherryPos->x && &setCherryPos.y == actualCherryPos->y;
+  return updatedCherryPos.x == actualCherryPos->x && updatedCherryPos.y == actualCherryPos->y;
 }
 
 class Test: public CPPUNIT_NS::TestCase {
