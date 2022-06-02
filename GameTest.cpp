@@ -52,7 +52,7 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
 
   int previousScore = game.getScore();
   int previousCherry = game.getSnake().getNumCherry();
-  // game.snakeMoveTo(p);
+  game.snakeMoveTo(p);
   
   if (cellType == CELL_OFF_BOARD || CELL_SNAKE){
     return game.getGameStatus() == expectedStatus;
