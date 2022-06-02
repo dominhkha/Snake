@@ -55,7 +55,6 @@ public:
 
     void setCellType(Position pos, CellType cellType);
     Snake getSnake();
-private:
 	void addCherry();  
 	
 };

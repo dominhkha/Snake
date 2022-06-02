@@ -113,7 +113,6 @@ bool verifyCanChange(Direction  current, Direction next){
 
 bool verifySetCellType(CellType expectedCellType){
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
-  gameTest.setCellType(position, expectedCellType);
 
   Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
 
