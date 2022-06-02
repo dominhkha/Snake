@@ -131,7 +131,7 @@ bool verifyAddCherry(){
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
 
   // remove current cherry position to add new one
-  // Position previousCherryPos = gameTest.getCherryPosition(); 
+  Position previousCherryPos = gameTest.getCherryPosition(); 
   // gameTest.setCellType(previousCherryPos, CELL_EMPTY);
   // // add new cherry
   // gameTest.addCherry();
@@ -143,7 +143,7 @@ bool verifyAddCherry(){
   if(actualCherryPos == nullptr){
     return false;
   }
-
+  std::cout<<"ok";
   return updatedCherryPos.x == actualCherryPos->x && updatedCherryPos.y == actualCherryPos->y;
 }
 
