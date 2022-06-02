@@ -111,6 +111,7 @@ protected:
       std::cout<<"ok107";
       int testSize = 4;
       std::string sharedName = "[testSnakeMoveTo] ";
+      Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
       TestStruct snakeMoveToTestCases[testSize] =
         {
           {
