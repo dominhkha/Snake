@@ -131,7 +131,7 @@ bool verifyAddCherry(){
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
 
   // remove current cherry position to add new one
-  Position *previousCherryPos = getPositionByCellTypeInBoard(CELL_CHERRY, gameTest);
+  Position previousCherryPos = gameTest.getCherryPosition();  
   gameTest.setCellType(*previousCherryPos, CELL_EMPTY);
 
   // add new cherry
