@@ -54,7 +54,7 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   // SDL_Renderer* renderer;
   // initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
   // Gallery* gallery = new Gallery(renderer);
-  Game game(BOARD_WIDTH, BOARD_HEIGHT);
+  Game game = new Game(BOARD_WIDTH, BOARD_HEIGHT);
   // SDL_Event e;
   Position p(1, 2);
   game.setCellType(p, cellType);
@@ -157,11 +157,11 @@ int main()
 
   CPPUNIT_NS::TestResult controller;
 
-  // CPPUNIT_NS::TestResultCollector result;
-  // controller.addListener(&result);
+  CPPUNIT_NS::TestResultCollector result;
+  controller.addListener(&result);
 
-  // CPPUNIT_NS::BriefTestProgressListener progress;
-  // controller.addListener(&progress);
+  CPPUNIT_NS::BriefTestProgressListener progress;
+  controller.addListener(&progress);
 
   CPPUNIT_NS::TestRunner runner;
 
