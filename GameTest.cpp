@@ -146,7 +146,7 @@ bool verifyNextStep(Direction nextDirection){
 
   gameTest.processUserInput(nextDirection);
   gameTest.nextStep();
-  Direction current = gameTest.currentDirection;
+  Direction current = gameTest.getCurrentDirection();
 
   return current == nextDirection;
 }

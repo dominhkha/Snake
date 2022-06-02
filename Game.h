@@ -41,6 +41,7 @@ public:
 
     std::vector<Position> getSnakePositions() const;
     Position getCherryPosition() const { return cherryPosition; }
+    Direction getCurrentDirection() const { return currentDirection; }
     int getScore() const { return score; }
     bool canChange(Direction current, Direction next) const;    
     
