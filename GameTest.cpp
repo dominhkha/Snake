@@ -132,7 +132,8 @@ bool verifyAddCherry(){
 
   // remove current cherry position to add new one
   Position previousCherryPos = gameTest.getCherryPosition();  
-  gameTest.setCellType(previousCherryPos, CELL_EMPTY);
+  std::cout<<previousCherryPos;
+  // gameTest.setCellType(previousCherryPos, CELL_EMPTY);
 
   // add new cherry
   gameTest.addCherry();
@@ -141,13 +142,11 @@ bool verifyAddCherry(){
   Position *actualCherryPos =  getPositionByCellTypeInBoard(CELL_CHERRY, gameTest);
 
   // if no cherry is added, return false
-  // if(actualCherryPos == nullptr){
-  //   return false;
-  // }
-  std::cout<<actualCherryPos;
+  if(actualCherryPos == nullptr){
+    return false;
+  }
 
-  // return updatedCherryPos.x == actualCherryPos->x && updatedCherryPos.y == actualCherryPos->y;
-  return true;
+  return updatedCherryPos.x == actualCherryPos->x && updatedCherryPos.y == actualCherryPos->y;
 }
 
 class Test: public CPPUNIT_NS::TestCase {
