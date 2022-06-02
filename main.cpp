@@ -13,49 +13,45 @@
 using namespace std;
 
 
+#define CLOCK_NOW chrono::system_clock::now
+typedef chrono::duration<double> ElapsedTime;
 
-// #define CLOCK_NOW chrono::system_clock::now
-// typedef chrono::duration<double> ElapsedTime;
-
-// Gallery* gallery = nullptr; // global picture manager
+Gallery* gallery = nullptr; // global picture manager
 
 int main(int argc, char* argv[])
 {
+    
+    // srand(time(0));
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+    initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
+    gallery = new Gallery(renderer);
     Game game(BOARD_WIDTH, BOARD_HEIGHT);
-    Position p(1, 2);
-    game.setCellType(p, CELL_OFF_BOARD);
-    cout<<p.x;
-    // // srand(time(0));
-    // SDL_Window* window;
-    // SDL_Renderer* renderer;
-    // initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
-    // gallery = new Gallery(renderer);
+    SDL_Event e;
     
-    // SDL_Event e;
-    
-    // renderSplashScreen();
-    // auto start = CLOCK_NOW();        
-    // renderGamePlay(renderer, game, gallery);
+    renderSplashScreen();
+    auto start = CLOCK_NOW();        
+    renderGamePlay(renderer, game, gallery);
 
-    // while (game.isGameRunning()) {
-    //     while (SDL_PollEvent(&e)) {
-    //         interpretEvent(e, game);
-    //     }
+    while (game.isGameRunning()) {
+        while (SDL_PollEvent(&e)) {
+            interpretEvent(e, game);
+        }
 
-    //     auto end = CLOCK_NOW();
-    //     ElapsedTime elapsed = end-start;
-    //     if (elapsed.count() > STEP_DELAY) {
-    //         game.nextStep();
-    //         renderGamePlay(renderer, game, gallery);
-    //         start = end;
-    //     }
-    //     SDL_Delay(1);
-    // }
-    // renderGameOver(renderer, game);
-    // updateRankingTable(game);
+        auto end = CLOCK_NOW();
+        ElapsedTime elapsed = end-start;
+        if (elapsed.count() > STEP_DELAY) {
+            game.nextStep();
+            renderGamePlay(renderer, game, gallery);
+            start = end;
+        }
+        SDL_Delay(1);
+    }
+    renderGameOver(renderer, game);
+    updateRankingTable(game);
 
-    // delete gallery;
-    // quitSDL(window, renderer);
+    delete gallery;
+    quitSDL(window, renderer);
     return 0;
 }
 

@@ -158,19 +158,19 @@ int main()
   // SDL_Event e;
   Position p(1, 2);
   game.setCellType(p, CELL_EMPTY);
-  // CPPUNIT_NS::TestResult controller;
+  CPPUNIT_NS::TestResult controller;
 
-  // CPPUNIT_NS::TestResultCollector result;
-  // controller.addListener(&result);
+  CPPUNIT_NS::TestResultCollector result;
+  controller.addListener(&result);
 
-  // CPPUNIT_NS::BriefTestProgressListener progress;
-  // controller.addListener(&progress);
+  CPPUNIT_NS::BriefTestProgressListener progress;
+  controller.addListener(&progress);
 
-  // CPPUNIT_NS::TestRunner runner;
+  CPPUNIT_NS::TestRunner runner;
 
-  // runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());
-  // runner.run(controller);
+  runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());
+  runner.run(controller);
 
-  // return result.wasSuccessful() ? 0 : 1;
-  return 0;
+  return result.wasSuccessful() ? 0 : 1;
+  // return 0;
 }
