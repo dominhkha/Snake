@@ -148,16 +148,20 @@ int main()
 {
   std::cout<<"ok149";
   CPPUNIT_NS::TestResult controller;
-
+  std::cout<<"ok151";
   CPPUNIT_NS::TestResultCollector result;
+  std::cout<<"ok153";
   controller.addListener(&result);
-
+  std::cout<<"ok153";
   CPPUNIT_NS::BriefTestProgressListener progress;
+  std::cout<<"ok153";
   controller.addListener(&progress);
-
+std::cout<<"ok153";
   CPPUNIT_NS::TestRunner runner;
+  std::cout<<"ok153";
   runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());
+  std::cout<<"ok153";
   runner.run(controller);
-
+std::cout<<"ok153";
   return result.wasSuccessful() ? 0 : 1;
 }
