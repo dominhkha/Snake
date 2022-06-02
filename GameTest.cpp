@@ -94,8 +94,12 @@ void runTestLoop(TestStruct testCases[], int testSize) {
 class Test: public CPPUNIT_NS::TestCase {
   CPPUNIT_TEST_SUITE(Test);
   CPPUNIT_TEST(testSnakeMoveTo);
+  CPPUNIT_TEST(successTestExit);
   CPPUNIT_TEST_SUITE_END();
 
+public:
+  void setUp(void) {}
+  void tearDown(void) {}
 protected:
 
   void testSnakeMoveTo(void){
