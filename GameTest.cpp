@@ -135,7 +135,7 @@ protected:
           },
           {
             sharedName + "CELL_EMPTY",
-            verifySnakeMoveTo(CELL_EMPTY, GAME_RUNNING, gameTest),
+            verifySnakeMoveTo(CELL_EMPTY, GAME_RUNNING),
             true,
             "snake should continue moving if snake moves to CELL_EMPTY"
           },
