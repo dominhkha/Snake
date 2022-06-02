@@ -146,7 +146,7 @@ int main()
   Game game(BOARD_WIDTH, BOARD_HEIGHT);
   // SDL_Event e;
   Position p(1, 2);
-  game.setCellType(p, cellType);
+  game.setCellType(p, CELL_SNAKE);
   CPPUNIT_NS::TestResult controller;
 
   CPPUNIT_NS::TestResultCollector result;
