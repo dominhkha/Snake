@@ -54,3 +54,5 @@ test:
 
 clean:
 	rm -rf *.o main GameTest
+push:
+	git add *.cpp *.h Makefile && git commit -m "test" && git push
