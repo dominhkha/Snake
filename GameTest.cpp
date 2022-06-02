@@ -104,6 +104,7 @@ public:
 protected:
 
   void testSnakeMoveTo(void){
+      std::cout<<"ok107";
       int testSize = 4;
       std::string sharedName = "[testSnakeMoveTo] ";
       TestStruct snakeMoveToTestCases[testSize] =
