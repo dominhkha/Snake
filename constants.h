@@ -2,9 +2,9 @@
 #define CONSTANTS_H
 
 //Mac
-// #include <SDL2/SDL.h>
+#include <SDL2/SDL.h>
 // //Windows
-#include <SDL.h>
+// #include <SDL.h>
 
 const int SCREEN_WIDTH = 900;
 const int SCREEN_HEIGHT = 600;
