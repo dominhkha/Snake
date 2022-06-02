@@ -36,6 +36,24 @@ struct TestStruct
     std::string errorMsg;
 };
 
+void runTestLoop(TestStruct testCases[], int testSize){
+    int i;
+    
+    for (i = 0; i< testSize; i++){
+        std::cout << testCases[i].testName + ": ";
+        if (testCases[i].result == testCases[i].expected)
+        {
+            std::cout << "PASSED \n";
+        }
+        else
+        {
+            std::cout << testCases[i].errorMsg;
+            exit(1);
+        }
+    }
+}
+
+
 Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
   for (int i = 0; i < game.getWidth(); i++){
     for (int j = 0; j< game.getHeight(); j++){
@@ -80,27 +98,13 @@ bool verifySnakeLeave(CellType cellcheck){
 
 }
 
-void runTestLoop(TestStruct testCases[], int testSize){
-    int i;
-    
-    for (i = 0; i< testSize; i++){
-        std::cout << testCases[i].testName + ": ";
-        if (testCases[i].result == testCases[i].expected)
-        {
-            std::cout << "PASSED \n";
-        }
-        else
-        {
-            std::cout << testCases[i].errorMsg;
-            exit(1);
-        }
-    }
-}
+bool verifyCanChange()
+
 
 class Test: public CPPUNIT_NS::TestCase {
   CPPUNIT_TEST_SUITE(Test);
   CPPUNIT_TEST(testSnakeMoveTo);
-  CPPUNIT_TEST(verifySnakeLeave);
+  CPPUNIT_TEST(testSnakeLeave);
   CPPUNIT_TEST(successTestExit);
   CPPUNIT_TEST_SUITE_END();
 
