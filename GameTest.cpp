@@ -26,7 +26,8 @@ Position createPositionByCellType(CellType cellType, Game &game){
 
   Position p(rand() % game.getWidth(), rand() % game.getHeight());
   game.setCellType(p, cellType);
-  return Position pp(rand() % game.getWidth(), rand() % game.getHeight());
+  Position p1(1, 1);
+  return p1;
 }
 
 Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
