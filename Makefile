@@ -51,7 +51,7 @@ run:
 	./main
 
 test:
-	chmod +x guessitTest
+	chmod +x GameTest
 	./GameTest
 
 clean:
