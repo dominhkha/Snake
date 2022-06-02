@@ -48,13 +48,12 @@ Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
 }
 
 
-bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
+bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus, Game gameTest){
 
   // SDL_Window* window;
   // SDL_Renderer* renderer;
   // initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
   // Gallery* gallery = new Gallery(renderer);
-  Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
   // SDL_Event e;
   Position p(1, 2);
   gameTest.setCellType(p, cellType);
@@ -116,25 +115,25 @@ protected:
         {
           {
             sharedName + "CELL_OFF_BOARD",
-            verifySnakeMoveTo(CELL_OFF_BOARD, GAME_OVER),
+            verifySnakeMoveTo(CELL_OFF_BOARD, GAME_OVER, gameTest),
             true,
             "GAME_OVER if snake moves to CELL_OFF_BOARD"
           },
           {
             sharedName + "CELL_SNAKE",
-            verifySnakeMoveTo(CELL_SNAKE, GAME_OVER),
+            verifySnakeMoveTo(CELL_SNAKE, GAME_OVER, gameTest),
             true,
             "GAME_OVER if snake moves to CELL_SNAKE"
           },
           {
             sharedName + "CELL_CHERRY",
-            verifySnakeMoveTo(CELL_CHERRY, GAME_RUNNING),
+            verifySnakeMoveTo(CELL_CHERRY, GAME_RUNNING, gameTest),
             true,
              "score should be increased, snake sould eat sherry and new cherry should be added if snake moves to CELL_CHERRY"
           },
           {
             sharedName + "CELL_EMPTY",
-            verifySnakeMoveTo(CELL_EMPTY, GAME_RUNNING),
+            verifySnakeMoveTo(CELL_EMPTY, GAME_RUNNING, gameTest),
             true,
             "snake should continue moving if snake moves to CELL_EMPTY"
           },
