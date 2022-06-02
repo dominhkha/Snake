@@ -40,10 +40,8 @@ all:
 	g++ -std=c++17 -c Game.cpp $(LIBFLAGS)
 	g++ -std=c++17 -c Snake.cpp $(LIBFLAGS)
 	g++ -std=c++17 -c main.cpp $(LIBFLAGS)
-	
-	g++ -std=c++17 utils.o  painter.o main.o -o main $(LIBFLAGS)
 
-	g++ -std=c++17 utils.o  painter.o main.o -o main $(LIBFLAGS)
+	g++ -std=c++17 SDL_utils.o  Gallery.o Game.o  Snake.o GameTest.o -o main $(LIBFLAGS)
 	g++ -std=c++17 -c GameTest.cpp $(LIBFLAGS)
 	g++ -std=c++17 SDL_utils.o  Gallery.o Game.o  Snake.o GameTest.o  -lcppunit -o GameTest $(LIBFLAGS)
 run:
