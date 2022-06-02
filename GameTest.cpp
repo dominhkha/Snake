@@ -241,8 +241,8 @@ protected:
           {
             sharedName + "canChange 3",
             verifyCanChange(LEFT, RIGHT),
-            true,
-            "Snake can move if current is LEFT and next is RIGHT direction"
+            false,
+            "Snake can not move if current is LEFT and next is RIGHT direction"
           },
 
         };
