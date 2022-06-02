@@ -1,5 +1,8 @@
 #include <iostream>
-#include <SDL.h>
+//Mac
+#include <SDL2/SDL.h>
+// //Windows
+// #include <SDL.h>
 
 #include "Game.h"
 #include "constants.h"
