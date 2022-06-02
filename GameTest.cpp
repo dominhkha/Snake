@@ -43,32 +43,29 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   // SDL_Renderer* renderer;
   // initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
   // Gallery* gallery = new Gallery(renderer);
-  std::cout<<"ok50";
   Game game(BOARD_WIDTH, BOARD_HEIGHT);
   // SDL_Event e;
-  std::cout<<"ok52";
-  Position p(rand() % game.getWidth(), rand() % game.getHeight());
+  Position p(1, 1);
   game.setCellType(p, cellType);
   // renderSplashScreen();
   // renderGamePlay(renderer, game, gallery);
 
-  std::cout<<p.x;
   int previousScore = game.getScore();
   int previousCherry = game.getSnake().getNumCherry();
   game.snakeMoveTo(p);
   
-  // if (cellType == CELL_OFF_BOARD || CELL_SNAKE){
-  //   return game.getGameStatus() == expectedStatus;
-  // }
-  // if (cellType == CELL_CHERRY){
-  //   std::cout<<"ok65";
-  //   if (getPositionByCellTypeInBoard(CELL_CHERRY, game) == nullptr){
-  //     return false;
-  //   }
-  //   std::cout<<"ok69";
-  //   return previousScore + 1 == game.getScore() && previousCherry + 1 == game.getSnake().getNumCherry();
-  // }
-  // return game.getSquares()[p.x][p.y] == CELL_SNAKE;
+  if (cellType == CELL_OFF_BOARD || CELL_SNAKE){
+    return game.getGameStatus() == expectedStatus;
+  }
+  if (cellType == CELL_CHERRY){
+    std::cout<<"ok65";
+    if (getPositionByCellTypeInBoard(CELL_CHERRY, game) == nullptr){
+      return false;
+    }
+    std::cout<<"ok69";
+    return previousScore + 1 == game.getScore() && previousCherry + 1 == game.getSnake().getNumCherry();
+  }
+  return game.getSquares()[p.x][p.y] == CELL_SNAKE;
   return true;
 
 }

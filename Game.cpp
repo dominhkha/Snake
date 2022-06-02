@@ -60,7 +60,7 @@ void Game::nextStep()
     snake.move(currentDirection);
 }
 
-void Game::setCellType(Position &pos, CellType cellType) 
+void Game::setCellType(Position pos, CellType cellType) 
 {
 	if (pos.isInsideBox(0, 0, width, height)) squares[pos.y][pos.x] = cellType;
 }

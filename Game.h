@@ -53,7 +53,7 @@ public:
     int getWidth();
     int getHeight();
 
-    void setCellType(Position &pos, CellType cellType);
+    void setCellType(Position pos, CellType cellType);
     Snake getSnake();
 private:
 	void addCherry();  
