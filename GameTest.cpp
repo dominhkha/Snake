@@ -282,7 +282,7 @@ protected:
     {
       {
         sharedName,
-        verifyAddCherry(CELL_OFF_BOARD, GAME_OVER),
+        verifyAddCherry(),
         true,
         "Cherry should be randomly added if snake have already ate"
       },
