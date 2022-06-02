@@ -36,7 +36,6 @@ struct TestStruct
     std::string errorMsg;
 };
 
-
 Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
   for (int i = 0; i < game.getWidth(); i++){
     for (int j = 0; j< game.getHeight(); j++){
@@ -54,9 +53,9 @@ Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
 bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
 
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
-  Position p(1, 2);
-  gameTest.setCellType(p, cellType);
+  Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
 
+  gameTest.setCellType(p, cellType);
 
   int previousScore = gameTest.getScore();
   gameTest.snakeMoveTo(p);
@@ -70,6 +69,14 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   }
 
   return gameTest.getSquares()[p.x][p.y] == CELL_SNAKE;
+}
+
+bool verifySnakeLeave(CellType cellcheck){
+  Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
+  Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
+  
+  gameTest.snakeLeave(p);
+  return gameTest.getCellType(p) == cellcheck;
 
 }
 
@@ -93,6 +100,7 @@ void runTestLoop(TestStruct testCases[], int testSize){
 class Test: public CPPUNIT_NS::TestCase {
   CPPUNIT_TEST_SUITE(Test);
   CPPUNIT_TEST(testSnakeMoveTo);
+  CPPUNIT_TEST(verifySnakeLeave);
   CPPUNIT_TEST(successTestExit);
   CPPUNIT_TEST_SUITE_END();
 
@@ -134,6 +142,28 @@ protected:
         };
       
         runTestLoop(snakeMoveToTestCases, testSize);
+  }
+
+   void testSnakeLeave(void){
+      int testSize = 2;
+      std::string sharedName = "[testSnakeLeave] ";
+      TestStruct snakeLeaveTestCases[testSize] =
+        {
+          {
+            sharedName + "CELL_OFF_BOARD",
+            verifySnakeLeave(CELL_OFF_BOARD),
+            false,
+            "cell should be CELL_EMPTY is snake leaves"
+          },
+          {
+            sharedName + "CELL_SNAKE",
+            verifySnakeLeave(CELL_EMPTY),
+            true,
+            "cell should be CELL_EMPTY is snake leaves"
+          }
+        };
+      
+        runTestLoop(snakeLeaveTestCases, testSize);
   }
 
 
