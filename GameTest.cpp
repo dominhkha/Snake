@@ -49,10 +49,11 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   Gallery gallery = Gallery(renderer);
   Game game(BOARD_WIDTH, BOARD_HEIGHT);
   SDL_Event e;
-
+  std::cout<<"ok52";
   Position p = createPositionByCellType(cellType, game);
   // renderSplashScreen();
   // renderGamePlay(renderer, game);
+  std::cout<<p.x;
   int previousScore = game.getScore();
   int previousCherry = game.getSnake().getNumCherry();
   game.snakeMoveTo(p);
@@ -61,9 +62,11 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
     return game.getGameStatus() == expectedStatus;
   }
   if (cellType == CELL_CHERRY){
+    std::cout<<"ok65";
     if (getPositionByCellTypeInBoard(CELL_CHERRY, game) == nullptr){
       return false;
     }
+    std::cout<<"ok69";
     return previousScore + 1 == game.getScore() && previousCherry + 1 == game.getSnake().getNumCherry();
   }
   return game.getSquares()[p.x][p.y] == CELL_SNAKE;
