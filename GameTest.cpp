@@ -7,10 +7,27 @@
 #include <cppunit/BriefTestProgressListener.h>
 #include <cppunit/extensions/TestFactoryRegistry.h>
 
-#include "constants.h"
+// #include "constants.h"
 // #include "SDL_utils.h"
-#include "Game.h"
+// #include "Game.h"
 // #include "Gallery.h"
+
+// #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+#include <chrono>
+
+#include "SDL_utils.h"
+#include "Game.h"
+#include "Gallery.h"
+
+#include "constants.h"
+
+
+
+#define CLOCK_NOW chrono::system_clock::now
+typedef chrono::duration<double> ElapsedTime;
 
 
 
@@ -46,7 +63,7 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   Game game(BOARD_WIDTH, BOARD_HEIGHT);
   // SDL_Event e;
   Position p(1, 2);
-  // game.setCellType(p, cellType);
+  game.setCellType(p, cellType);
   // renderSplashScreen();
   // renderGamePlay(renderer, game, gallery);
 
@@ -143,10 +160,7 @@ CPPUNIT_TEST_SUITE_REGISTRATION(Test);
 
 int main()
 {
-  Game game(BOARD_WIDTH, BOARD_HEIGHT);
-  // SDL_Event e;
-  Position p(1, 2);
-  game.setCellType(p, CELL_SNAKE);
+
   CPPUNIT_NS::TestResult controller;
 
   CPPUNIT_NS::TestResultCollector result;
