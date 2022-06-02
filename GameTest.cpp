@@ -22,14 +22,6 @@ struct TestStruct
     std::string errorMsg;
 };
 
-Position createPositionByCellType(CellType cellType, Game &game){
-
-  Position p(rand() % game.getWidth(), rand() % game.getHeight());
-  // game.setCellType(p, cellType);
-  // Position p1;
-
-  return p;
-}
 
 Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
   for (int i = 0; i < game.getWidth(); i++){
@@ -55,7 +47,8 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   Game game(BOARD_WIDTH, BOARD_HEIGHT);
   // SDL_Event e;
   std::cout<<"ok52";
-  Position p = createPositionByCellType(cellType, game);
+  Position p(rand() % game.getWidth(), rand() % game.getHeight());
+  game.setCellType(p, cellType);
   // renderSplashScreen();
   // renderGamePlay(renderer, game, gallery);
 
