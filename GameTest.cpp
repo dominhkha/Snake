@@ -129,6 +129,12 @@ bool verifySetCellType(CellType expectedCellType){
 
 bool verifyAddCherry(){
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
+
+  // remove current cherry position to add new one
+  Position *previousCherryPos = getPositionByCellTypeInBoard(CELL_CHERRY, gameTest);
+  gameTest.setCellType(*previousCherryPos, CELL_EMPTY);
+
+  // add new cherry
   gameTest.addCherry();
 
   Position updatedCherryPos = gameTest.getCherryPosition();
