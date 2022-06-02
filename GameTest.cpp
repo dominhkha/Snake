@@ -320,7 +320,7 @@ protected:
       },
   };
 
-    runTestLoop(snakeAddCherryTestCases, testSize);
+    runTestLoop(snakeTestStepTestCases, testSize);
   }
   
 
