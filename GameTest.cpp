@@ -144,7 +144,9 @@ protected:
 
 CPPUNIT_TEST_SUITE_REGISTRATION(Test);
 
-int main() {
+int main()
+{
+  std::cout<<"ok149";
   CPPUNIT_NS::TestResult controller;
 
   CPPUNIT_NS::TestResultCollector result;
