@@ -61,7 +61,7 @@ Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
     for (int j = 0; j < game.getHeight(); j++){
 
       if(game.getSquares()[i][j] == cellType){
-        Position *p(i, j);
+        Position* p = new Position(i, j);
         return p;
       }
 
