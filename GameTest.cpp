@@ -127,14 +127,8 @@ bool verifySetCellType(CellType expectedCellType){
 
 
 bool verifyAddCherry(){
+  // addCherry is already added in constructor
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
-
-  // remove current cherry position to add new one
-  Position previousCherryPos = gameTest.getCherryPosition(); 
-  // gameTest.setCellType(previousCherryPos, CELL_EMPTY);
-  // // add new cherry
-  // gameTest.addCherry();
-
   Position updatedCherryPos = gameTest.getCherryPosition();
   Position *actualCherryPos =  getPositionByCellTypeInBoard(CELL_CHERRY, gameTest);
 
@@ -142,11 +136,19 @@ bool verifyAddCherry(){
   if(actualCherryPos == nullptr){
     return false;
   }
-  std::cout<<updatedCherryPos.x<<std::endl;
-  std::cout<<actualCherryPos->x<<std::endl;
-  std::cout<<updatedCherryPos.y<<std::endl;
-  std::cout<<actualCherryPos->y<<std::endl;
+ 
   return updatedCherryPos.x == actualCherryPos->x && updatedCherryPos.y == actualCherryPos->y;
+}
+
+bool verifyNextStep(Direction nextDirection){
+  // initially direction is right
+  Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
+
+  gameTest.processUserInput(nextDirection);
+  gameTest.nextStep();
+  Direction current = gameTest.currentDirection;
+
+  return current == nextDirection;
 }
 
 class Test: public CPPUNIT_NS::TestCase {
@@ -156,6 +158,7 @@ class Test: public CPPUNIT_NS::TestCase {
   CPPUNIT_TEST(testCanChange);
   CPPUNIT_TEST(testSetCellType);
   CPPUNIT_TEST(testAddCherry);
+  CPPUNIT_TEST(testNextStep);
 
   CPPUNIT_TEST(successTestExit);
   CPPUNIT_TEST_SUITE_END();
@@ -291,9 +294,31 @@ protected:
         sharedName,
         verifyAddCherry(),
         true,
-        "Cherry should be randomly added if snake have already eaten"
+        "Cherry should be randomly added if snake have already eaten or in game init"
       },
     };
+  }
+
+  void testNextStep(void){
+
+    int testSize = 2;
+    std::string sharedName = "[testNextStep] ";
+
+    TestStruct snakeTestStepTestCases[testSize] = 
+    {
+      {
+        sharedName,
+        verifyNextStep(UP),
+        true,
+        "nextStep can be UP if current step is RIGHT"
+      },
+      {
+        sharedName,
+        verifyNextStep(LEFT),
+        false,
+        "nextStep can not be LEFT if current step is RIGHT"
+      },
+  };
 
     runTestLoop(snakeAddCherryTestCases, testSize);
   }
