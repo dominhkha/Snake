@@ -65,7 +65,6 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   // renderGamePlay(renderer, game, gallery);
 
   int previousScore = gameTest.getScore();
-  // int previousCherry = gameTest.getSnake().getNumCherry();
   gameTest.snakeMoveTo(p);
   
   if (cellType == CELL_OFF_BOARD || CELL_SNAKE){
@@ -74,14 +73,13 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
     }
     return false;
   }
-  // if (cellType == CELL_CHERRY){
-  //   if (getPositionByCellTypeInBoard(CELL_CHERRY, gameTest) == nullptr){
-  //     return false;
-  //   }
-  //   return previousScore + 1 == gameTest.getScore() && previousCherry + 1 == gameTest.getSnake().getNumCherry();
-  // }
-  // return gameTest.getSquares()[p.x][p.y] == CELL_SNAKE;
-  return true;
+  if (cellType == CELL_CHERRY){
+    if (getPositionByCellTypeInBoard(CELL_CHERRY, gameTest) == nullptr){
+      return false;
+    }
+    return previousScore + 1 == gameTest.getScore();
+  }
+  return gameTest.getSquares()[p.x][p.y] == CELL_SNAKE;
 
 }
 
