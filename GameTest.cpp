@@ -23,9 +23,9 @@ struct TestStruct
 };
 
 Position *createPositionByCellType(CellType cellType, Game &game){
-  Position* p(rand() % game.getWidth(), rand() % game.getHeight());
-  game.setCellType(*p, cellType);
-  return p;
+  Position p(rand() % game.getWidth(), rand() % game.getHeight());
+  game.setCellType(p, cellType);
+  return &p;
 }
 
 Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
