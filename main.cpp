@@ -19,12 +19,14 @@ typedef chrono::duration<double> ElapsedTime;
 Gallery* gallery = nullptr; // global picture manager
 
 int main(int argc, char* argv[])
-{   
+{
+    
     srand(time(0));
     SDL_Window* window;
     SDL_Renderer* renderer;
     initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
     gallery = new Gallery(renderer);
+    Game game(BOARD_WIDTH, BOARD_HEIGHT);
     SDL_Event e;
     
     renderSplashScreen();
