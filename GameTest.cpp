@@ -123,7 +123,7 @@ bool verifySetCellType(CellType expectedCellType){
   }
 
   gameTest.setCellType(p, expectedCellType);
-  return gameTest.getCellType() == expectedCellType;
+  return gameTest.getCellType(p) == expectedCellType;
 }
 
 
