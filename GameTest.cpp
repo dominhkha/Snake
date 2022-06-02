@@ -25,6 +25,9 @@
 #include "constants.h"
 
 
+Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
+
+
 struct TestStruct
 {
     std::string testName;
@@ -48,7 +51,7 @@ Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
 }
 
 
-bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus, Game gameTest){
+bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
 
   // SDL_Window* window;
   // SDL_Renderer* renderer;
@@ -108,27 +111,25 @@ public:
 protected:
 
   void testSnakeMoveTo(void){
-      std::cout<<"ok107";
       int testSize = 4;
       std::string sharedName = "[testSnakeMoveTo] ";
-      Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
       TestStruct snakeMoveToTestCases[testSize] =
         {
           {
             sharedName + "CELL_OFF_BOARD",
-            verifySnakeMoveTo(CELL_OFF_BOARD, GAME_OVER, gameTest),
+            verifySnakeMoveTo(CELL_OFF_BOARD, GAME_OVER),
             true,
             "GAME_OVER if snake moves to CELL_OFF_BOARD"
           },
           {
             sharedName + "CELL_SNAKE",
-            verifySnakeMoveTo(CELL_SNAKE, GAME_OVER, gameTest),
+            verifySnakeMoveTo(CELL_SNAKE, GAME_OVER),
             true,
             "GAME_OVER if snake moves to CELL_SNAKE"
           },
           {
             sharedName + "CELL_CHERRY",
-            verifySnakeMoveTo(CELL_CHERRY, GAME_RUNNING, gameTest),
+            verifySnakeMoveTo(CELL_CHERRY, GAME_RUNNING),
             true,
              "score should be increased, snake sould eat sherry and new cherry should be added if snake moves to CELL_CHERRY"
           },
