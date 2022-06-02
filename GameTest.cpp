@@ -55,15 +55,21 @@ void runTestLoop(TestStruct testCases[], int testSize){
 
 
 Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
+
   for (int i = 0; i < game.getWidth(); i++){
+
     for (int j = 0; j< game.getHeight(); j++){
+
       if(game.getSquares()[i][j] == cellType){
         Position p(i, j);
         Position *p_pointer = &p;
         return p_pointer;
       }
+
     }
+
   }
+
   return nullptr;
 }
 
@@ -72,10 +78,9 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
 
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
   Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
+  int previousScore = gameTest.getScore();
 
   gameTest.setCellType(p, cellType);
-
-  int previousScore = gameTest.getScore();
   gameTest.snakeMoveTo(p);
   
   if (cellType == CELL_OFF_BOARD || CELL_SNAKE){
@@ -90,23 +95,62 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
 }
 
 bool verifySnakeLeave(CellType cellcheck){
+
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
   Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
-  
   gameTest.snakeLeave(p);
+
   return gameTest.getCellType(p) == cellcheck;
 
 }
 
-// bool verifyCanChange(Direction  current, Direction next){
+bool verifyCanChange(Direction  current, Direction next){
+  Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
+  Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
 
-// }
+  return gameTest.canChange(current, next);
+}
 
+bool verifySetCellType(CellType expectedCellType){
+  Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
+  gameTest.setCellType(position, expectedCellType);
+
+  Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
+
+  // if outside of the board
+  if(expectedCellType==CELL_OFF_BOARD){
+    p.x = gameTest.getWidth() + 1;
+    p.y = gameTest.getHeight() + 1;
+  }
+
+  gameTest.setCellType(p, expectedCellType);
+  return gameTest.getCellType == expectedCellType;
+}
+
+
+bool verifyAddCherry(){
+  Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
+  gameTest.addCherry();
+
+  Position setCherryPos = gameTest.getCherryPosition();
+  Position actualCherryPos =  getPositionByCellTypeInBoard(CELL_CHERRY);
+
+  // if no cherry is added, return false
+  if(actualCherryPos == nullptr){
+    return false
+  }
+
+  return setCherryPos.x == actualCherryPos.x && setCherryPos.y == actualCherryPos.y;
+}
 
 class Test: public CPPUNIT_NS::TestCase {
   CPPUNIT_TEST_SUITE(Test);
   CPPUNIT_TEST(testSnakeMoveTo);
   CPPUNIT_TEST(testSnakeLeave);
+  CPPUNIT_TEST(testCanChange);
+  CPPUNIT_TEST(testSetCellType);
+  CPPUNIT_TEST(testAddCherry);
+
   CPPUNIT_TEST(successTestExit);
   CPPUNIT_TEST_SUITE_END();
 
@@ -150,19 +194,19 @@ protected:
         runTestLoop(snakeMoveToTestCases, testSize);
   }
 
-   void testSnakeLeave(void){
+  void testSnakeLeave(void){
       int testSize = 2;
       std::string sharedName = "[testSnakeLeave] ";
       TestStruct snakeLeaveTestCases[testSize] =
         {
           {
-            sharedName + "CELL_OFF_BOARD",
+            sharedName + "should not be CELL_OFF_BOARD",
             verifySnakeLeave(CELL_OFF_BOARD),
             false,
             "cell should be CELL_EMPTY is snake leaves"
           },
           {
-            sharedName + "CELL_SNAKE",
+            sharedName + "should be CELL_EMPTY",
             verifySnakeLeave(CELL_EMPTY),
             true,
             "cell should be CELL_EMPTY is snake leaves"
@@ -172,6 +216,82 @@ protected:
         runTestLoop(snakeLeaveTestCases, testSize);
   }
 
+  void testCanChange(void){
+      int testSize = 4;
+      std::string sharedName = "[testCanChange] ";
+      TestStruct snakeLeaveTestCases[testSize] =
+        {
+          {
+            sharedName + "canChange 1",
+            verifyCanChange(UP, LEFT),
+            true,
+            "Snake can move if current is UP and next is LEFT direction"
+          },
+          {
+            sharedName + "canChange 2",
+            verifyCanChange(UP, DOWN),
+            false,
+            "Snake can not move if current is UP and next is DOWN direction"
+          },
+          {
+            sharedName + "canChange 3",
+            verifyCanChange(LEFT, UP),
+            true,
+            "Snake can move if current is LEFT and next is UP direction"
+          },
+          {
+            sharedName + "canChange 3",
+            verifyCanChange(LEFT, RIGHT),
+            true,
+            "Snake can move if current is LEFT and next is RIGHT direction"
+          },
+
+        };
+      
+        runTestLoop(snakeLeaveTestCases, testSize);
+  }
+  
+  void testSetCellType(void){
+      int testSize = 4;
+      std::string sharedName = "[testSetCellType] ";
+      TestStruct snakeLeaveTestCases[testSize] =
+        {
+          {
+            sharedName + "CELL_EMPTY",
+            verifySetCellType(CELL_EMPTY),
+            true,
+            "Set cell as CELL_EMPTY"
+          },
+          {
+            sharedName + "CELL_OFF_BOARD",
+            verifySetCellType(CELL_OFF_BOARD),
+            true,
+            "Set cell as CELL_OFF_BOARD"
+          }
+
+        };
+      
+        runTestLoop(snakeLeaveTestCases, testSize);
+  }
+
+  void testAddCherry(void){
+
+    int testSize = 1;
+    std::string sharedName = "[testAddCherry] ";
+
+    TestStruct snakeAddCherryTestCases[testSize] = 
+    {
+      {
+        sharedName,
+        verifyAddCherry(CELL_OFF_BOARD, GAME_OVER),
+        true,
+        "Cherry should be randomly added if snake have already ate"
+      },
+    };
+
+    runTestLoop(snakeAddCherryTestCases, testSize);
+  }
+  
 
   void successTestExit(void) {
     std::cout << "all tests passed! \n";
