@@ -98,7 +98,9 @@ bool verifySnakeLeave(CellType cellcheck){
 
 }
 
-bool verifyCanChange()
+// bool verifyCanChange(Direction  current, Direction next){
+
+// }
 
 
 class Test: public CPPUNIT_NS::TestCase {
