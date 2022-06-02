@@ -12,11 +12,15 @@ on:
 jobs:
   snake_job:
     runs-on: ubuntu-latest
-    name: painter Job
+    name: Snake Job
     steps:
       - uses: actions/checkout@v2
       - name: update
         run: sudo apt-get update
+      - name: install sdl2
+        run: sudo apt install libsdl2-dev
+      - name: install sdl2image
+        run: sudo apt install libsdl2-image-dev
       - name: install cppunit
         run: sudo apt install -y libcppunit-dev
       - name: configure privelige
