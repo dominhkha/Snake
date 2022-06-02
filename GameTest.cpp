@@ -22,10 +22,11 @@ struct TestStruct
     std::string errorMsg;
 };
 
-Position *createPositionByCellType(CellType cellType, Game &game){
-  Position *p(1, 1);
-  game.setCellType(*p, cellType);
-  return p;
+Position createPositionByCellType(CellType cellType, Game &game){
+
+  Position p(rand() % game.getWidth(), rand() % game.getHeight());
+  game.setCellType(p, cellType);
+  return Position p(rand() % game.getWidth(), rand() % game.getHeight());;
 }
 
 Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
