@@ -52,7 +52,8 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   std::cout<<"ok52";
   Position p = createPositionByCellType(cellType, game);
   renderSplashScreen();
-  renderGamePlay(renderer, game);
+  renderGamePlay(renderer, game, gallery);
+
   std::cout<<p.x;
   int previousScore = game.getScore();
   int previousCherry = game.getSnake().getNumCherry();
