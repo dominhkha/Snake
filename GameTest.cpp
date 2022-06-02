@@ -23,9 +23,7 @@ struct TestStruct
 };
 
 Position *createPositionByCellType(CellType cellType, Game &game){
-  std::cout<<game.getHeight();
-  std::cout<<game.getWidth();
-  Position *p(rand() % game.getWidth(), rand() % game.getHeight());
+  Position *p(1, 1);
   game.setCellType(*p, cellType);
   return p;
 }
