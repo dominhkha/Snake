@@ -140,7 +140,7 @@ bool verifyAddCherry(){
     return false;
   }
   std::cout<<updatedCherryPos.x;
-  std::cout<<actualCherryPos.x;
+  std::cout<<actualCherryPos->x;
 
   return updatedCherryPos.x == actualCherryPos->x && updatedCherryPos.y == actualCherryPos->y;
 }
