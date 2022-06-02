@@ -60,8 +60,8 @@ Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
 
     for (int j = 0; j < game.getHeight(); j++){
 
-      if(game.getSquares()[i][j] == cellType){
-        Position* p = new Position(i, j);
+      if(game.getSquares()[j][i] == cellType){
+        Position* p = new Position(j, i);
         return p;
       }
 
@@ -90,7 +90,7 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
     return previousScore + 1 == gameTest.getScore() && getPositionByCellTypeInBoard(CELL_CHERRY, gameTest) != nullptr;
   }
 
-  return gameTest.getSquares()[p.x][p.y] == CELL_SNAKE;
+  return gameTest.getSquares()[p.y][p.x] == CELL_SNAKE;
 }
 
 bool verifySnakeLeave(CellType cellcheck){
