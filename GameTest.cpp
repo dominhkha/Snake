@@ -72,7 +72,7 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
     if(gameTest.getGameStatus() == expectedStatus){
       return true;
     }
-    return false
+    return false;
   }
   // if (cellType == CELL_CHERRY){
   //   if (getPositionByCellTypeInBoard(CELL_CHERRY, gameTest) == nullptr){
