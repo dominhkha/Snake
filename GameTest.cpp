@@ -57,9 +57,9 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   // renderGamePlay(renderer, game, gallery);
 
   // std::cout<<p.x;
-  // int previousScore = game.getScore();
-  // int previousCherry = game.getSnake().getNumCherry();
-  // game.snakeMoveTo(p);
+  int previousScore = game.getScore();
+  int previousCherry = game.getSnake().getNumCherry();
+  game.snakeMoveTo(p);
   
   // if (cellType == CELL_OFF_BOARD || CELL_SNAKE){
   //   return game.getGameStatus() == expectedStatus;
