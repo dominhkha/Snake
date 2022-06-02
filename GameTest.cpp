@@ -137,6 +137,7 @@ bool verifyAddCherry(){
   // add new cherry
   gameTest.addCherry();
 
+  std::cout<<"none";
   Position updatedCherryPos = gameTest.getCherryPosition();
   Position *actualCherryPos =  getPositionByCellTypeInBoard(CELL_CHERRY, gameTest);
 
@@ -248,7 +249,7 @@ protected:
             "Snake can move if current is LEFT and next is UP direction"
           },
           {
-            sharedName + "canChange 3",
+            sharedName + "canChange 4",
             verifyCanChange(LEFT, RIGHT),
             false,
             "Snake can not move if current is LEFT and next is RIGHT direction"
