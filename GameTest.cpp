@@ -59,8 +59,8 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   Position p(1, 2);
   gameTest.setCellType(p, cellType);
 
-  renderSplashScreen();
-  renderGamePlay(renderer, game, gallery);
+  // renderSplashScreen();
+  // renderGamePlay(renderer, game, gallery);
 
   int previousScore = gameTest.getScore();
   int previousCherry = gameTest.getSnake().getNumCherry();
