@@ -61,8 +61,9 @@ Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
     for (int j = 0; j < game.getHeight(); j++){
 
       if(game.getSquares()[j][i] == cellType){
-        Position* p = new Position(i, j);
-        return p;
+        //  squares[pos.y][pos.x]
+        Position* matchPos = new Position(i, j);
+        return matchPos;
       }
 
     }
@@ -76,11 +77,11 @@ Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
 bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
 
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
-  Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
+  Position movingPos(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
   int previousScore = gameTest.getScore();
 
-  gameTest.setCellType(p, cellType);
-  gameTest.snakeMoveTo(p);
+  gameTest.setCellType(movingPos, cellType);
+  gameTest.snakeMoveTo(movingPos);
   
   if (cellType == CELL_OFF_BOARD || CELL_SNAKE){
     return gameTest.getGameStatus() == expectedStatus;
@@ -90,22 +91,21 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
     return previousScore + 1 == gameTest.getScore() && getPositionByCellTypeInBoard(CELL_CHERRY, gameTest) != nullptr;
   }
 
-  return gameTest.getSquares()[p.y][p.x] == CELL_SNAKE;
+  return gameTest.getSquares()[movingPos.y][movingPos.x] == CELL_SNAKE;
 }
 
 bool verifySnakeLeave(CellType cellcheck){
 
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
-  Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
-  gameTest.snakeLeave(p);
+  Position leavingPos(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
+  gameTest.snakeLeave(leavingPos);
 
-  return gameTest.getCellType(p) == cellcheck;
+  return gameTest.getCellType(leavingPos) == cellcheck;
 
 }
 
 bool verifyCanChange(Direction  current, Direction next){
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
-  Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
 
   return gameTest.canChange(current, next);
 }
@@ -115,10 +115,10 @@ bool verifySetCellType(CellType expectedCellType){
 
   Position p(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
 
-  // if outside of the board
+  // if outside of the board, get cell out of the (width, height), such as (width+1, witdh+1)
   if(expectedCellType==CELL_OFF_BOARD){
     p.x = gameTest.getWidth() + 1;
-    p.y = gameTest.getHeight() + 1;
+    p.y = gameTest.getWidth() + 1;
   }
 
   gameTest.setCellType(p, expectedCellType);
