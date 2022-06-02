@@ -52,17 +52,15 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
 
   int previousScore = game.getScore();
   int previousCherry = game.getSnake().getNumCherry();
-  game.snakeMoveTo(p);
+  // game.snakeMoveTo(p);
   
   if (cellType == CELL_OFF_BOARD || CELL_SNAKE){
     return game.getGameStatus() == expectedStatus;
   }
   if (cellType == CELL_CHERRY){
-    std::cout<<"ok65";
     if (getPositionByCellTypeInBoard(CELL_CHERRY, game) == nullptr){
       return false;
     }
-    std::cout<<"ok69";
     return previousScore + 1 == game.getScore() && previousCherry + 1 == game.getSnake().getNumCherry();
   }
   return game.getSquares()[p.x][p.y] == CELL_SNAKE;
