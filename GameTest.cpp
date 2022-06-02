@@ -25,7 +25,7 @@
 #include "constants.h"
 
 
-Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
+
 
 
 struct TestStruct
@@ -58,6 +58,7 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   // initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
   // Gallery* gallery = new Gallery(renderer);
   // SDL_Event e;
+  Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
   Position p(1, 2);
   gameTest.setCellType(p, cellType);
 
@@ -73,11 +74,13 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
     }
     return false;
   }
+  
+  std::cout<<previousScore;
+  std::cout<<"ok";
+  std::cout<<gameTest.getScore();
+
   if (cellType == CELL_CHERRY){
-    if (getPositionByCellTypeInBoard(CELL_CHERRY, gameTest) == nullptr){
-      return false;
-    }
-    return previousScore + 1 == gameTest.getScore();
+    return previousScore + 1 == gameTest.getScore() && getPositionByCellTypeInBoard(CELL_CHERRY, gameTest) != nullptr;
   }
   return gameTest.getSquares()[p.x][p.y] == CELL_SNAKE;
 
@@ -133,7 +136,7 @@ protected:
             sharedName + "CELL_CHERRY",
             verifySnakeMoveTo(CELL_CHERRY, GAME_RUNNING),
             true,
-             "score should be increased, snake sould eat sherry and new cherry should be added if snake moves to CELL_CHERRY"
+             "score should be increased, and new cherry should be added if snake moves to CELL_CHERRY"
           },
           {
             sharedName + "CELL_EMPTY",
