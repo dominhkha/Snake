@@ -123,7 +123,7 @@ bool verifySetCellType(CellType expectedCellType){
   }
 
   gameTest.setCellType(p, expectedCellType);
-  return gameTest.getCellType == expectedCellType;
+  return gameTest.getCellType() == expectedCellType;
 }
 
 
@@ -132,7 +132,7 @@ bool verifyAddCherry(){
   gameTest.addCherry();
 
   Position setCherryPos = gameTest.getCherryPosition();
-  Position actualCherryPos =  getPositionByCellTypeInBoard(CELL_CHERRY);
+  Position actualCherryPos =  getPositionByCellTypeInBoard(CELL_CHERRY, gameTest);
 
   // if no cherry is added, return false
   if(actualCherryPos == nullptr){
