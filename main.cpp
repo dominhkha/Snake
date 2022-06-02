@@ -33,6 +33,7 @@ int main(int argc, char* argv[])
     auto start = CLOCK_NOW();        
     renderGamePlay(renderer, game, gallery);
 
+    
     while (game.isGameRunning()) {
         while (SDL_PollEvent(&e)) {
             interpretEvent(e, game);

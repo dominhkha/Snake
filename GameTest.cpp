@@ -58,12 +58,11 @@ Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
 
   for (int i = 0; i < game.getWidth(); i++){
 
-    for (int j = 0; j< game.getHeight(); j++){
+    for (int j = 0; j < game.getHeight(); j++){
 
       if(game.getSquares()[i][j] == cellType){
-        Position p(i, j);
-        Position *p_pointer = &p;
-        return p_pointer;
+        Position *p(i, j);
+        return p;
       }
 
     }
