@@ -8,9 +8,9 @@
 #include <cppunit/extensions/TestFactoryRegistry.h>
 
 #include "constants.h"
-#include "SDL_utils.h"
+// #include "SDL_utils.h"
 #include "Game.h"
-#include "Gallery.h"
+// #include "Gallery.h"
 
 
 
@@ -43,16 +43,16 @@ Position *getPositionByCellTypeInBoard(CellType cellType, Game &game){
 
 bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
 
-  SDL_Window* window;
-  SDL_Renderer* renderer;
-  initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
-  Gallery* gallery = new Gallery(renderer);
+  // SDL_Window* window;
+  // SDL_Renderer* renderer;
+  // initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
+  // Gallery* gallery = new Gallery(renderer);
   Game game(BOARD_WIDTH, BOARD_HEIGHT);
-  SDL_Event e;
+  // SDL_Event e;
   std::cout<<"ok52";
   Position p = createPositionByCellType(cellType, game);
-  renderSplashScreen();
-  renderGamePlay(renderer, game, gallery);
+  // renderSplashScreen();
+  // renderGamePlay(renderer, game, gallery);
 
   std::cout<<p.x;
   int previousScore = game.getScore();
