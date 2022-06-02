@@ -54,10 +54,10 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   // SDL_Renderer* renderer;
   // initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
   // Gallery* gallery = new Gallery(renderer);
-  Game game = new Game(BOARD_WIDTH, BOARD_HEIGHT);
+  Game game(BOARD_WIDTH, BOARD_HEIGHT);
   // SDL_Event e;
   Position p(1, 2);
-  game.setCellType(p, cellType);
+  // game.setCellType(p, cellType);
   // renderSplashScreen();
   // renderGamePlay(renderer, game, gallery);
 
