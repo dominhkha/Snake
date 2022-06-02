@@ -131,10 +131,8 @@ bool verifyAddCherry(){
   Game gameTest(BOARD_WIDTH, BOARD_HEIGHT);
 
   // remove current cherry position to add new one
-  Position previousCherryPos = gameTest.getCherryPosition(); 
-  std::cout<<previousCherryPos.x;
-  std::cout<<previousCherryPos.y;
-  gameTest.snakeLeave(previousCherryPos);
+  Position previousCherryPos(rand()%gameTest.getWidth(), rand()%gameTest.getHeight());
+  gameTest.setCellType(previousCherryPos);
   // add new cherry
   gameTest.addCherry();
 
