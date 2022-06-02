@@ -46,8 +46,7 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   Game game(BOARD_WIDTH, BOARD_HEIGHT);
   // SDL_Event e;
   Position p(1, 2);
-  std::cout<<p.x;
-  game.setCellType(p, cellType);
+  // game.setCellType(p, cellType);
   // renderSplashScreen();
   // renderGamePlay(renderer, game, gallery);
 
@@ -65,7 +64,6 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
     return previousScore + 1 == game.getScore() && previousCherry + 1 == game.getSnake().getNumCherry();
   }
   return game.getSquares()[p.x][p.y] == CELL_SNAKE;
-  return true;
 
 }
 
@@ -145,6 +143,10 @@ CPPUNIT_TEST_SUITE_REGISTRATION(Test);
 
 int main()
 {
+  Game game(BOARD_WIDTH, BOARD_HEIGHT);
+  // SDL_Event e;
+  Position p(1, 2);
+  game.setCellType(p, cellType);
   CPPUNIT_NS::TestResult controller;
 
   CPPUNIT_NS::TestResultCollector result;

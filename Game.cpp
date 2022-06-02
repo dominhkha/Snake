@@ -62,7 +62,6 @@ void Game::nextStep()
 
 void Game::setCellType(Position pos, CellType cellType) 
 {
-	std::cout<<pos.y;
 	if (pos.isInsideBox(0, 0, width, height)) squares[pos.y][pos.x] = cellType;
 }
 

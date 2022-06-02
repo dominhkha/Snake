@@ -26,11 +26,14 @@ int main(int argc, char* argv[])
     initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
     gallery = new Gallery(renderer);
     Game game(BOARD_WIDTH, BOARD_HEIGHT);
+    // Position p(1, 2);
+    // game.setCellType(p, CELL_OFF_BOARD);
     SDL_Event e;
     
     renderSplashScreen();
     auto start = CLOCK_NOW();        
     renderGamePlay(renderer, game, gallery);
+
     while (game.isGameRunning()) {
         while (SDL_PollEvent(&e)) {
             interpretEvent(e, game);

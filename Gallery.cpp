@@ -2,9 +2,9 @@
 #include "SDL_utils.h"
 
 //Mac
-#include <SDL2/SDL_image.h>
+// #include <SDL2/SDL_image.h>
 // //Windows
-// #include <SDL_image.h>
+#include <SDL_image.h>
 
 
 Gallery::Gallery(SDL_Renderer* renderer_)

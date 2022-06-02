@@ -4,9 +4,9 @@
 #include <vector>
 #include <string>
 //Mac
-#include <SDL2/SDL.h>
+// #include <SDL2/SDL.h>
 // //Windows
-// #include <SDL.h>
+#include <SDL.h>
 
 enum PictureID {
     PIC_CHERRY = 0, PIC_SNAKE_VERTICAL,
