@@ -14,9 +14,10 @@
 
 
 
- 
-struct TestStruct {
+struct TestStruct
+{
     std::string testName;
+    bool result;
     bool expected;
     std::string errorMsg;
 };
@@ -75,12 +76,11 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
 
 }
 
-void runTestLoop(TestStruct testCases[], int testSize) {
+void runTestLoop(TestStruct testCases[], int testSize){
     int i;
     for (i = 0; i< testSize; i++){
         std::cout << testCases[i].testName + ": ";
-        std::cout << testCases[i].expected << std::endl;
-        if (testCases[i].expected)
+        if (testCases[i].result == testCases[i].expected)
         {
             std::cout << "PASSED \n";
         }
@@ -112,22 +112,26 @@ protected:
         {
           {
             sharedName + "CELL_OFF_BOARD",
-            verifySnakeMoveTo(CELL_OFF_BOARD, GAME_OVER) == true,
+            verifySnakeMoveTo(CELL_OFF_BOARD, GAME_OVER),
+            true,
             "GAME_OVER if snake moves to CELL_OFF_BOARD"
           },
           {
             sharedName + "CELL_SNAKE",
-            verifySnakeMoveTo(CELL_SNAKE, GAME_OVER) == true,
+            verifySnakeMoveTo(CELL_SNAKE, GAME_OVER),
+            true,
             "GAME_OVER if snake moves to CELL_SNAKE"
           },
           {
             sharedName + "CELL_CHERRY",
-            verifySnakeMoveTo(CELL_CHERRY, GAME_RUNNING) == true,
+            verifySnakeMoveTo(CELL_CHERRY, GAME_RUNNING),
+            true,
              "score should be increased, snake sould eat sherry and new cherry should be added if snake moves to CELL_CHERRY"
           },
           {
             sharedName + "CELL_EMPTY",
-            verifySnakeMoveTo(CELL_EMPTY, GAME_RUNNING) == true,
+            verifySnakeMoveTo(CELL_EMPTY, GAME_RUNNING),
+            true,
             "snake should continue moving if snake moves to CELL_EMPTY"
           },
         };
@@ -147,7 +151,6 @@ CPPUNIT_TEST_SUITE_REGISTRATION(Test);
 
 int main()
 {
-  std::cout<<"ok149";
   CPPUNIT_NS::TestResult controller;
 
   CPPUNIT_NS::TestResultCollector result;
@@ -160,6 +163,6 @@ int main()
 
   runner.addTest(CPPUNIT_NS::TestFactoryRegistry::getRegistry().makeTest());
   runner.run(controller);
-  
+
   return result.wasSuccessful() ? 0 : 1;
 }
