@@ -46,7 +46,7 @@ bool verifySnakeMoveTo(CellType cellType, GameStatus expectedStatus){
   SDL_Window* window;
   SDL_Renderer* renderer;
   initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
-  Gallery* gallery = Gallery(renderer);
+  Gallery* gallery = new Gallery(renderer);
   Game game(BOARD_WIDTH, BOARD_HEIGHT);
   SDL_Event e;
   std::cout<<"ok52";
