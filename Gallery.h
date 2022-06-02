@@ -3,7 +3,10 @@
 
 #include <vector>
 #include <string>
-#include <SDL.h>
+//Mac
+#include <SDL2/SDL.h>
+// //Windows
+// #include <SDL.h>
 
 enum PictureID {
     PIC_CHERRY = 0, PIC_SNAKE_VERTICAL,
