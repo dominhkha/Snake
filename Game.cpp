@@ -157,13 +157,15 @@ void Game::addCherry()
 {
     do {
 		// init a random position inside the play screen (width, height)
-		// Suggestiont: use rand() function
+		// Suggestion: use rand() function
+
         Position randomPos() // YOUR CODE HERE
 		
 		// check if the randomPos is EMPTY 
         if (getCellType(randomPos) == CELL_EMPTY) {
 
         	// assign the cherry position as randomPos, and set randomPos type as CELL_CHERRY
+
 			// YOUR CODE HERE
 			// YOUR CODE HERE
 

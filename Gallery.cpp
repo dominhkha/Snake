@@ -1,10 +1,14 @@
 #include "Gallery.h"
 #include "SDL_utils.h"
 
-//Mac
-#include <SDL2/SDL_image.h>
-// //Windows
-// #include <SDL_image.h>
+// include lib with your OS in approriate way
+// Mac
+#include <SDL2/SDL.h>
+// Windows
+// #include <SDL.h>
+
+
+// DO NOT CHANGE THE FOLLOWING LINES
 
 
 Gallery::Gallery(SDL_Renderer* renderer_)

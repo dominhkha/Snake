@@ -1,3 +1,5 @@
+
+// DO NOT CHANGE THIS FILE
 #ifndef POSITION_H
 #define POSITION_H
 

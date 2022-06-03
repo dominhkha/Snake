@@ -1,12 +1,22 @@
+
+
+
 #include <iostream>
-//Mac
+
+// include lib with your OS in approriate way
+// Mac
 #include <SDL2/SDL.h>
-// //Windows
+// Windows
 // #include <SDL.h>
+
+
+// DO NOT CHANGE THE FOLLOWING LINES
 
 #include "Game.h"
 #include "constants.h"
 #include "Gallery.h"
+
+
 
 //*****************************************************
 // Các hàm chung về khởi tạo và huỷ SDL
