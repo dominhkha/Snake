@@ -1,8 +1,14 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#include <SDL.h>
+// include lib with your OS in approriate way
+// Mac
+#include <SDL2/SDL.h>
+// Windows
+// #include <SDL.h>
 
+
+// DO NOT CHANGE THE FOLLOWING LINES
 const int SCREEN_WIDTH = 900;
 const int SCREEN_HEIGHT = 600;
 const char WINDOW_TITLE[] = "Snake Game";

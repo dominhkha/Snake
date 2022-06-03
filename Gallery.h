@@ -3,7 +3,15 @@
 
 #include <vector>
 #include <string>
-#include <SDL.h>
+
+// include lib with your OS in approriate way
+// Mac
+#include <SDL2/SDL.h>
+// Windows
+// #include <SDL.h>
+
+
+// DO NOT CHANGE THE FOLLOWING LINES
 
 enum PictureID {
     PIC_CHERRY = 0, PIC_SNAKE_VERTICAL,

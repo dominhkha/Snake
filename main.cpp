@@ -20,7 +20,8 @@ Gallery* gallery = nullptr; // global picture manager
 
 int main(int argc, char* argv[])
 {
-    srand(time(0));
+    
+    // srand(time(0));
     SDL_Window* window;
     SDL_Renderer* renderer;
     initSDL(window, renderer, SCREEN_WIDTH, SCREEN_HEIGHT, WINDOW_TITLE);
@@ -31,6 +32,8 @@ int main(int argc, char* argv[])
     renderSplashScreen();
     auto start = CLOCK_NOW();        
     renderGamePlay(renderer, game, gallery);
+
+    
     while (game.isGameRunning()) {
         while (SDL_PollEvent(&e)) {
             interpretEvent(e, game);

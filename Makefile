@@ -35,17 +35,15 @@
 
 LIBFLAGS = -lSDL2 -lSDL2_image
 all:
-	g++ -std=c++17 -c SDL_utils.cpp $(LIBFLAGS)
-	g++ -std=c++17 -c Gallery.cpp $(LIBFLAGS)
-	g++ -std=c++17 -c Game.cpp $(LIBFLAGS)
-	g++ -std=c++17 -c Snake.cpp $(LIBFLAGS)
-	g++ -std=c++17 -c main.cpp $(LIBFLAGS)
-	
-	g++ -std=c++17 utils.o  painter.o main.o -o main $(LIBFLAGS)
+	g++ -std=c++11 -c SDL_utils.cpp $(LIBFLAGS)
+	g++ -std=c++11 -c Gallery.cpp $(LIBFLAGS)
+	g++ -std=c++11 -c Game.cpp $(LIBFLAGS)
+	g++ -std=c++11 -c Snake.cpp $(LIBFLAGS)
+	g++ -std=c++11 -c main.cpp $(LIBFLAGS)
 
-	g++ -std=c++17 utils.o  painter.o main.o -o main $(LIBFLAGS)
-	g++ -std=c++17 -c GameTest.cpp $(LIBFLAGS)
-	g++ -std=c++17 SDL_utils.o  Gallery.o Game.o  Snake.o GameTest.o  -lcppunit -o GameTest $(LIBFLAGS)
+	g++ -std=c++11 SDL_utils.o  Gallery.o Game.o  Snake.o  main.o -o main $(LIBFLAGS)
+	g++ -std=c++11 -c GameTest.cpp $(LIBFLAGS)
+	g++ -std=c++11 SDL_utils.o  Gallery.o Game.o  Snake.o GameTest.o  -lcppunit -o GameTest $(LIBFLAGS)
 run:
 	chmod +x main
 	./main
@@ -56,3 +54,5 @@ test:
 
 clean:
 	rm -rf *.o main GameTest
+push:
+	git add *.cpp *.h Makefile && git commit -m "test" && git push

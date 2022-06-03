@@ -2,7 +2,15 @@
 #define SDL_UTILS__H
 
 #include <iostream>
-#include <SDL.h>
+
+// include lib with your OS in approriate way
+// Mac
+#include <SDL2/SDL.h>
+// Windows
+// #include <SDL.h>
+
+
+// DO NOT CHANGE THE FOLLOWING LINES
 
 #include "Game.h"
 #include "constants.h"
